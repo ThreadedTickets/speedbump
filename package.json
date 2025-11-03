@@ -1,0 +1,27 @@
+{
+  "name": "speedbump",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf .build/ && npx tsc && npm i",
+    "start": "node ./.build/src/index.js",
+    "bot:debug": "npm run build && npm run start",
+    "bot:prod": "npm run build && npm run start",
+    "dev": "npx dotenvx run -f .env.development -- npm run bot:debug",
+    "bot": "npx dotenvx run -f .env.production -- npm run bot:prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.51.0",
+    "@types/node": "^24.9.2",
+    "discord.js": "^14.24.2",
+    "lru-cache": "^11.2.2",
+    "pg": "^8.16.3",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.6"
+  }
+}

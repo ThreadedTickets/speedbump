@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS guild (
+  id TEXT PRIMARY KEY,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  deactivated DATE DEFAULT NULL
+);
+
+CREATE TABLE IF NOT EXISTS channel (
+  id TEXT PRIMARY KEY,
+  guild TEXT NOT NULL REFERENCES guild(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS slowmode_rule (
+  id SERIAL PRIMARY KEY,
+  channel TEXT NOT NULL REFERENCES channel(id) ON DELETE CASCADE,
+  messages INTEGER CHECK (messages > 0),
+  slowmode INTEGER CHECK (slowmode >= 0),
+  interval INTEGER CHECK (interval > 0),
+  notify BOOLEAN DEFAULT TRUE
+);
