@@ -7,7 +7,7 @@ const command: AppCommand = {
   data: new SlashCommandBuilder()
     .setName("config")
     .setDescription("Setup the bot")
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
     .setContexts(InteractionContextType.Guild),
 
   async execute(client, data, interaction) {
