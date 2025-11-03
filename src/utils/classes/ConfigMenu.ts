@@ -107,12 +107,14 @@ export default class ConfigMenu {
                 .setLabel("New rule"),
               new ButtonBuilder()
                 .setCustomId(`removeRule:${this.selectedRule?.id ?? "none"}:${this.selectedChannelId}`)
+                .setDisabled(this.rules.length == 0)
                 .setStyle(ButtonStyle.Secondary)
                 .setLabel("Remove rule"),
               new ButtonBuilder()
                 .setCustomId(`clearRules:${this.selectedChannelId}`)
                 .setStyle(ButtonStyle.Secondary)
                 .setLabel("Clear channel rules")
+                .setDisabled(this.rules.length == 0)
             )
           )
           .addActionRowComponents(
@@ -120,7 +122,7 @@ export default class ConfigMenu {
               new ButtonBuilder()
                 .setCustomId(`page:${Math.max(this.page - 1, 0)}:${this.selectedChannelId}`)
                 .setStyle(ButtonStyle.Secondary)
-                .setDisabled(this.page == 0)
+                .setDisabled(this.page == 0 || this.rules.length == 0)
                 .setLabel("<<"),
               new ButtonBuilder()
                 .setCustomId(`balls`)
