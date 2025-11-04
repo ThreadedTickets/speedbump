@@ -60,6 +60,7 @@ const button: ButtonHandler = {
                   {
                     label: "Yes",
                     value: "1",
+                    default: template === undefined,
                   },
                   {
                     label: "No",
