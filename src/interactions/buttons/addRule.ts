@@ -19,7 +19,7 @@ const button: ButtonHandler = {
                 .setCustomId("messages")
                 .setMaxLength(3)
                 .setRequired(true)
-                .setValue(template === "BASE" ? "1" : undefined)
+                .setValue(template === "BASE" ? "1" : "")
                 .setStyle(TextInputStyle.Short)
             ),
 
@@ -31,7 +31,7 @@ const button: ButtonHandler = {
                 .setCustomId("interval")
                 .setMaxLength(3)
                 .setRequired(true)
-                .setValue(template === "BASE" ? "10" : undefined)
+                .setValue(template === "BASE" ? "10" : "")
                 .setStyle(TextInputStyle.Short)
             ),
 
@@ -44,7 +44,7 @@ const button: ButtonHandler = {
                 .setMaxLength(12)
                 .setRequired(true)
                 .setPlaceholder("Eg: 3h 2m 43s")
-                .setValue(template === "BASE" ? "0s" : undefined)
+                .setValue(template === "BASE" ? "0s" : "")
                 .setStyle(TextInputStyle.Short)
             ),
 
