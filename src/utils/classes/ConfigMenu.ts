@@ -107,7 +107,6 @@ export default class ConfigMenu {
                       .setCustomId(`addRule:${this.selectedChannelId}:BASE`)
                       .setStyle(ButtonStyle.Success)
                       .setLabel("Create a base rule")
-                      .setDisabled(this.rules.length >= config.maxRulesPerChannel)
                   )
           )
           .addActionRowComponents(
@@ -115,7 +114,8 @@ export default class ConfigMenu {
               new ButtonBuilder()
                 .setCustomId(`addRule:${this.selectedChannelId}`)
                 .setStyle(ButtonStyle.Primary)
-                .setLabel("New rule"),
+                .setLabel("New rule")
+                .setDisabled(this.rules.length >= config.maxRulesPerChannel),
               new ButtonBuilder()
                 .setCustomId(`removeRule:${this.selectedRule?.id ?? "none"}:${this.selectedChannelId}`)
                 .setDisabled(this.rules.length == 0)
