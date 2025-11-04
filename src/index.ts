@@ -6,7 +6,6 @@ import { loadEvents } from "./handlers/eventHandler";
 import { loadInteractionHandlers } from "./handlers/interactionHandlers";
 import "./utils/hooks/register";
 import "./utils/database/db";
-import Server from "./utils/classes/Server";
 import RuleCache from "./utils/classes/RuleCache";
 import logger from "./utils/logger";
 

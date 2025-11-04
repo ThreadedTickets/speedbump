@@ -1,4 +1,7 @@
 import {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
   ContainerBuilder,
   InteractionContextType,
   MessageFlags,
@@ -32,6 +35,14 @@ const command: AppCommand = {
                 "> This issue may also occur when Speedbump has updated the slowmode in the last minute, if you don't think this is the case, you may not have notifications enabled for a rule\n\n" +
                 "## My config is gone!\n" +
                 "> Speedbump will delete the config of servers when it is kicked. This happens automatically and so if you want to wipe your config I suppose you could kick and re-add Speedbump"
+            )
+          )
+          .addActionRowComponents(
+            new ActionRowBuilder<ButtonBuilder>().addComponents(
+              new ButtonBuilder()
+                .setLabel("Still need help? Join the support server!")
+                .setStyle(ButtonStyle.Link)
+                .setURL("https://discord.gg/9jFqS5H43Q")
             )
           ),
       ],
