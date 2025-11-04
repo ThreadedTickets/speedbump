@@ -4,6 +4,7 @@ import { ModalHandler } from "../../types/Interactions";
 import ConfigMenu from "../../utils/classes/ConfigMenu";
 import Server from "../../utils/classes/Server";
 import { parseDurationToMs } from "../../utils/formatters/duration";
+import config from "../../config";
 
 const button: ModalHandler = {
   customId: "addRule",
@@ -27,6 +28,12 @@ const button: ModalHandler = {
     interaction.deferUpdate();
 
     const server = new Server(interaction.guildId);
+    if ((await server.loadRulesOnSingleChannel(channelId)).length >= config.maxRulesPerChannel)
+      return interaction.reply({
+        flags: [MessageFlags.Ephemeral],
+        content: `Max rules for this channel reached`,
+      });
+
     await server.addRule(channelId, {
       messages,
       interval,

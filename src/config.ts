@@ -7,6 +7,8 @@ export default {
     cache: {} as CacheWithLimitsOptions,
   },
 
+  maxRulesPerChannel: 15,
+
   prefix: ">",
 
   owner: process.env["DISCORD_OWNER"] ?? "",

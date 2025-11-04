@@ -11,6 +11,7 @@ import {
   TextDisplayBuilder,
 } from "discord.js";
 import Server from "./Server";
+import config from "../../config";
 
 type Rule = {
   id: number;
@@ -71,13 +72,13 @@ export default class ConfigMenu {
                       `If \`${this.selectedRule.messages}\` messages have been sent in the last \`${this.selectedRule.interval} seconds\`,\nset the slowmode to \`${this.selectedRule.slowmode} seconds\``
                     ),
                     new TextDisplayBuilder().setContent(
-                      `>>> :speech_balloon: ${this.selectedRule.messages} Messages\n:clock2: ${
+                      `> :speech_balloon: ${this.selectedRule.messages} Messages\n> :clock2: ${
                         this.selectedRule.interval
-                      } Seconds\n:zzz: ${this.selectedRule.slowmode} Seconds\n:bell: ${
+                      } Seconds\n> :zzz: ${this.selectedRule.slowmode} Seconds\n:bell: ${
                         this.selectedRule.notify ? "Yes" : "No"
                       }` +
                         (this.rules.length < 2
-                          ? "\n\n\n\n**At least 2 rules are needed for Speedbump to change the slowmode**"
+                          ? "\n**At least 2 rules are needed for Speedbump to change the slowmode**"
                           : "")
                     )
                   )
@@ -106,6 +107,7 @@ export default class ConfigMenu {
                       .setCustomId(`addRule:${this.selectedChannelId}:BASE`)
                       .setStyle(ButtonStyle.Success)
                       .setLabel("Create a base rule")
+                      .setDisabled(this.rules.length >= config.maxRulesPerChannel)
                   )
           )
           .addActionRowComponents(
