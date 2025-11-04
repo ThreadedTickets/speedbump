@@ -8,6 +8,7 @@ import "./utils/hooks/register";
 import "./utils/database/db";
 import Server from "./utils/classes/Server";
 import RuleCache from "./utils/classes/RuleCache";
+import logger from "./utils/logger";
 
 const discordClient = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
@@ -69,3 +70,6 @@ export const ruleCache = new RuleCache(60 * 5);
 export const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 client.login(process.env["DISCORD_TOKEN"]);
+
+process.on("unhandledRejection", (err: Error) => logger.error("Unhandled Rejection", err));
+process.on("uncaughtException", (err: Error) => logger.error("Uncaught Exception", err));
