@@ -5,9 +5,10 @@ const button: ButtonHandler = {
   customId: "addRule",
   owner: true,
   async execute(client, data, interaction) {
+    const [, channelId, template] = interaction.customId.split(":");
     interaction.showModal(
       new ModalBuilder()
-        .setCustomId(`addRule:${interaction.customId.split(":")[1]}`)
+        .setCustomId(`addRule:${channelId}`)
         .setTitle("New Rule")
         .setLabelComponents(
           new LabelBuilder()
@@ -18,6 +19,7 @@ const button: ButtonHandler = {
                 .setCustomId("messages")
                 .setMaxLength(3)
                 .setRequired(true)
+                .setValue(template === "BASE" ? "1" : undefined)
                 .setStyle(TextInputStyle.Short)
             ),
 
@@ -29,6 +31,7 @@ const button: ButtonHandler = {
                 .setCustomId("interval")
                 .setMaxLength(3)
                 .setRequired(true)
+                .setValue(template === "BASE" ? "10" : undefined)
                 .setStyle(TextInputStyle.Short)
             ),
 
@@ -41,6 +44,7 @@ const button: ButtonHandler = {
                 .setMaxLength(12)
                 .setRequired(true)
                 .setPlaceholder("Eg: 3h 2m 43s")
+                .setValue(template === "BASE" ? "0s" : undefined)
                 .setStyle(TextInputStyle.Short)
             ),
 
@@ -60,6 +64,7 @@ const button: ButtonHandler = {
                   {
                     label: "No",
                     value: "0",
+                    default: template === "BASE",
                   },
                 ])
             )

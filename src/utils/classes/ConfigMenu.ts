@@ -75,7 +75,10 @@ export default class ConfigMenu {
                         this.selectedRule.interval
                       } Seconds\n:zzz: ${this.selectedRule.slowmode} Seconds\n:bell: ${
                         this.selectedRule.notify ? "Yes" : "No"
-                      }`
+                      }` +
+                        (this.rules.length < 2
+                          ? "\n\n**At least 2 rules are needed for Speedbump to change the slowmode**"
+                          : "")
                     )
                   )
                   .setButtonAccessory(
@@ -91,12 +94,18 @@ export default class ConfigMenu {
                       .setStyle(ButtonStyle.Secondary)
                   )
               : new SectionBuilder()
-                  .addTextDisplayComponents(new TextDisplayBuilder().setContent(`There are no rules on this channel`))
+                  .addTextDisplayComponents(
+                    new TextDisplayBuilder().setContent(
+                      `There are no rules on this channel.\n` +
+                        `Create a base rule (your default slowmode) then create a second one that will make Speedbump to increase the slowmode on high activity\n\n` +
+                        `-# You need at least 2 rules for Speedbump to work on this channel`
+                    )
+                  )
                   .setButtonAccessory(
                     new ButtonBuilder()
-                      .setCustomId(`addRule:${this.selectedChannelId}:`)
+                      .setCustomId(`addRule:${this.selectedChannelId}:BASE`)
                       .setStyle(ButtonStyle.Success)
-                      .setLabel("Create one!")
+                      .setLabel("Create a base rule")
                   )
           )
           .addActionRowComponents(
