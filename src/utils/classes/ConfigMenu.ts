@@ -77,7 +77,7 @@ export default class ConfigMenu {
                         this.selectedRule.notify ? "Yes" : "No"
                       }` +
                         (this.rules.length < 2
-                          ? "\n\n**At least 2 rules are needed for Speedbump to change the slowmode**"
+                          ? "\n\n\n**At least 2 rules are needed for Speedbump to change the slowmode**"
                           : "")
                     )
                   )
