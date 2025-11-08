@@ -1,5 +1,6 @@
 import { LabelBuilder, ModalBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
 import { ButtonHandler } from "../../types/Interactions";
+import { formatDuration } from "../../utils/formatters/duration";
 
 const button: ButtonHandler = {
   customId: "editRule",
@@ -45,7 +46,7 @@ const button: ButtonHandler = {
                 .setMaxLength(12)
                 .setRequired(true)
                 .setPlaceholder("Eg: 3h 2m 43s")
-                .setValue(`${slowmode}s`)
+                .setValue(`${formatDuration(parseInt(slowmode) * 1000)}`)
                 .setStyle(TextInputStyle.Short)
             ),
 

@@ -81,7 +81,9 @@ const event: Event<"messageCreate"> = {
             components: [
               new ContainerBuilder().addTextDisplayComponents(
                 new TextDisplayBuilder().setContent(
-                  `Slowmode changed to ${formatDuration(slowmode)}\n#~ I can update the slowmode again <t:${Math.round(
+                  `**Slowmode changed to ${formatDuration(
+                    slowmode * 1000
+                  )}**\n-# I can update the slowmode again <t:${Math.round(
                     new Date().setMinutes(new Date().getMinutes() + 1) / 1000
                   )}:R>`
                 )
