@@ -36,7 +36,7 @@ const command: AppCommand = {
                 "## My config is gone!\n" +
                 "> Speedbump will delete the config of servers when it is kicked. This happens automatically and so if you want to wipe your config I suppose you could kick and re-add Speedbump\n\n" +
                 "## Still not working?\n" +
-                "> You can either join the support server or use the /debug command"
+                "> You can either join the support server or use the </debug:1436690885155885097> command"
             )
           )
           .addActionRowComponents(

@@ -37,7 +37,7 @@ const command: AppCommand = {
             .addSeparatorComponents(new SeparatorBuilder())
             .addTextDisplayComponents(
               new TextDisplayBuilder().setContent(
-                "I have launched a debugger session for you. Run this command again in the next 30 minutes to get the output log and see what might be going wrong. If you don't understand the log, feel free to share it in the support server"
+                "I have launched a debugger session for you. Run </debug:1436690885155885097> again in the next 30 minutes to get the output log and see what might be going wrong. If you don't understand the log, feel free to share it in the support server"
               )
             )
             .addActionRowComponents(
