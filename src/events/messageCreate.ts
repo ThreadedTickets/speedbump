@@ -1,8 +1,9 @@
-import { ChannelType } from "discord.js";
+import { ChannelType, ContainerBuilder, MessageFlags, TextDisplayBuilder } from "discord.js";
 import { Event } from "../types/Event";
 import Server, { serverCache } from "../utils/classes/Server";
 import logger from "../utils/logger";
 import debugLogManager from "../utils/classes/GuildDebugLogger";
+import { formatDuration } from "../utils/formatters/duration";
 
 const slowmdoeUpdates = new Map<string, number>();
 
@@ -74,7 +75,19 @@ const event: Event<"messageCreate"> = {
           });
         }, 60 * 1000); // Only allow the slowmode to be changed every 60 seconds
 
-        if (notify) message.channel.send(`Slowmode changed to ${slowmode} seconds`);
+        if (notify)
+          message.channel.send({
+            flags: [MessageFlags.IsComponentsV2],
+            components: [
+              new ContainerBuilder().addTextDisplayComponents(
+                new TextDisplayBuilder().setContent(
+                  `Slowmode changed to ${formatDuration(slowmode)}\n#~ I can update the slowmode again <t:${Math.round(
+                    new Date().setMinutes(new Date().getMinutes() + 1) / 1000
+                  )}:R>`
+                )
+              ),
+            ],
+          });
       } catch (error) {
         logger.error(error);
         debugLogManager.log(message.guildId, {
