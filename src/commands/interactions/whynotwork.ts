@@ -37,7 +37,7 @@ const command: AppCommand = {
                 "> Speedbump will delete the config of servers when it is kicked. This happens automatically and so if you want to wipe your config I suppose you could kick and re-add Speedbump\n\n" +
                 "## Still not working?\n" +
                 "> You can either join the support server or use the </debug:1436690885155885097> command\n" +
-                "You may also want to make sure Speedbump has the following permissions: `Manage Channels`, `Manage Threads`, `Send Messages`, `Embeded Links`, `Read Message History`"
+                "> You may also want to make sure Speedbump has the following permissions:\n> -`Manage Channels`\n> -`Manage Threads`\n> -`Send Messages`\n> -`Embeded Links`\n> -`Read Message History`"
             )
           )
           .addActionRowComponents(
