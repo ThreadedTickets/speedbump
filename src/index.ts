@@ -8,6 +8,7 @@ import "./utils/hooks/register";
 import "./utils/database/db";
 import RuleCache from "./utils/classes/RuleCache";
 import logger from "./utils/logger";
+import statPoster from "./statsPoster";
 
 const discordClient = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
@@ -64,6 +65,7 @@ loadPrefixCommands();
 deployAppCommands();
 loadEvents(client);
 loadInteractionHandlers();
+statPoster(client);
 
 export const ruleCache = new RuleCache(60 * 5);
 export const wait = (ms: number) => new Promise((res) => setTimeout(res, ms));
